@@ -10,5 +10,6 @@ Examples of DeepPulmoTB are shown in Figure 1.
 Figure 1: Examples of DeepPulmoTB.
 
 # Download the Data
-DeepPulmoTB dataset is available in [DeepFashion2 dataset](https://drive.google.com/drive/folders/125F48fsMBz2EF0Cpqk6aaHet5VH399Ok?usp=sharing). You need fill in the [form](https://docs.google.com/forms/d/e/1FAIpQLSeIoGaFfCQILrtIZPykkr8q_h9qQ5BoTYbjvf95aXbid0v2Bw/viewform?usp=sf_link) to get password for unzipping files. Please refer to Data Description below for detailed information about dataset.
+DeepPulmoTB dataset is available in [DeepFashion2 dataset](https://drive.google.com/drive/folders/125F48fsMBz2EF0Cpqk6aaHet5VH399Ok?usp=sharing). However, due to Our paper is still being submitted, DeepPulmoTB dataset has not been made public and is encrypted. For access to the dataset, please send an email to gs63891@student.upm.edu.my to get the password for unzipping files.
+Please refer to Data Description below for detailed information about dataset.
 
