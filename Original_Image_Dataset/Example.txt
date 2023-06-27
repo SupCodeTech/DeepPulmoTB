@@ -1,0 +1,35 @@
+├── DeepPulmoTB
+│   ├── Original_Image_Dataset
+│   │   ├── Part_1
+│   │   │   ├── Cavern_Detection_Train_CT
+│   │   │   │   ├── TRN_000.nii.gz
+│   │   │   │   ├── …
+│   │   │   ├── Cavern_Detection_Train_CT_PNG
+│   │   │   │   ├── TRN_000
+│   │   │   │   │   ├── 0.png
+│   │   │   │   │   ├── …
+│   │   │   │   ├── …
+│   │   │   ├── Caverns_Detection_Train_Masks
+│   │   │   │   ├── Caverns_Detection_Train_Masks1
+│   │   │   │   │   ├── train_masks1
+│   │   │   │   │   │   ├── TRN_000_mask.nii.gz
+│   │   │   │   │   │   ├── …
+│   │   │   │   ├── Caverns_Detection_Train_Masks2
+│   │   │   │   │   ├── train_masks2
+│   │   │   │   │   │   ├── TRN_000_regsegm_py.nii.gz
+│   │   │   │   │   │   ├── …
+│   │   │   ├── Cavern_Report_Train_CT
+│   │   │   │   ├── TRN_00.nii.gz
+│   │   │   │   ├── …
+│   │   │   ├── Cavern_Detection_Train_CT_PNG
+│   │   │   │   ├── TRN_00
+│   │   │   │   │   ├── 0.png
+│   │   │   │   │   ├── …
+│   │   │   │   ├── …
+│   │   │   ├── Caverns_Report_Train_Masks
+│   │   │   │   ├── Caverns_Report_Train_Masks1
+│   │   │   │   │   ├── TRN_00_mask.nii.gz
+│   │   │   │   │   ├── …
+│   │   │   │   ├── Caverns_Report_Train_Masks2
+│   │   │   │   │   ├── TRN_00_regsegm_py.nii.gz
+│   │   │   │   │   ├── …

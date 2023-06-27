@@ -1,0 +1,9 @@
+├── DeepPulmoTB
+│   ├── Training_Mask_Dataset
+│   │   ├── Part 1
+│   │   │   ├── TRN_00.nii.gz
+│   │   │   ├── TRN_000.nii.gz
+│   │   │   ├── …
+│   │   ├── Part 2
+│   │   │   ├── CTR_TRN_001
+│   │   │   ├── ...
