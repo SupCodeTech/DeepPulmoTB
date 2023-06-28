@@ -95,17 +95,17 @@ In addition, we need to unzip the `nii.gz` files under the Directories `DeepPulm
 python Cavern_Detection_Train_CT_Nii_to_PNG.py ${Cavern_Detection_Train_CT} ${Cavern_Detection_Train_CT_PNG}
 ```
 
-`Cavern_Detection_Train_CT`: This path is the path to store the Caverns Detection Train CT file.
+`Cavern_Detection_Train_CT`: This path is the path to store the Caverns Detection Train CT files.
 
-`Cavern_Detection_Train_CT_PNG `: This path is the path to decompress the Caverns Detection Train CT file into a PNG file.
+`Cavern_Detection_Train_CT_PNG `: This path is the path to decompress the Caverns Detection Train CT files into PNG files.
 
 This command can decompress all the `nii.gz` format files under the directory `DeepPulmoTB/Original_Image_Dataset/Part_1/Cavern_Detection_Train_CT` into `PNG` format to the directory: `DeepPulmoTB/Original_Image_Dataset/Part_1/Cavern_Detection_Train_CT_PNG`.
 
 ```shell
 python Cavern_Report_Train_CT_Nii_to_PNG.py ${Cavern_Report_Train_CT} ${Cavern_Report_Train_CT_PNG}
 ```
-`Cavern_Report_Train_CT`: This path is the path to store the Caverns Report Train CT file.
-`Cavern_Report_Train_CT_PNG`: This path is the path to decompress the Caverns Report Train CT file into a PNG file.
+`Cavern_Report_Train_CT`: This path is the path to store the Caverns Report Train CT files.
+`Cavern_Report_Train_CT_PNG`: This path is the path to decompress the Caverns Report Train CT files into PNG files.
 
 This command can decompress all the `nii.gz` format files under the directory `DeepPulmoTB/Original_Image_Dataset/Part_1/Cavern_Report_Train_CT` into `PNG` format to the directory: `DeepPulmoTB/Original_Image_Dataset/Part_1/Cavern_Report_Train_CT_PNG`.
 
@@ -164,10 +164,10 @@ First, execute the following statements to complete the construction of the cons
 python Cavern_Detection_training_mask_dataset_Part_1.py ${Cavern_detection_train_bboxes} ${Cavern_Detection_Train_CT} ${Cavern_Detection_Train_Masks1} ${Cavern_Detection_Train_Masks2} ${Cavern_Detection_Train_CT_PNG} ${Training_Mask _Dataset}
 ```
 `Caverns_detection_train_bboxes`: The path input is the path where the `CVS` file of cavern detection bounding boxes is located. \
-`Cavern_Detection_Train_CT`: This path refers to the storage path of the original CT data file of the cavern detection task. \
-`Cavern_Detection_Train_Masks1`: This path refers to the storage path of the train mask version 1 data file of the lung area of the cavern detection task. \
-`Cavern_Detection_Train_Masks2`: This path refers to the storage path of the train mask version 2 data file of the lung area of the cavern detection task. \
-`Cavern_Detection_Train_CT_PNG`: This path refers to the storage path of the PNG image file decompressed from the original CT data file of the cavern detection task. \
+`Cavern_Detection_Train_CT`: This path refers to the storage path of the original CT data files of the cavern detection task. \
+`Cavern_Detection_Train_Masks1`: This path refers to the storage path of the train mask version 1 data files of the lung area of the cavern detection task. \
+`Cavern_Detection_Train_Masks2`: This path refers to the storage path of the train mask version 2 data files of the lung area of the cavern detection task. \
+`Cavern_Detection_Train_CT_PNG`: This path refers to the storage path of the PNG image file decompressed from the original CT data files of the cavern detection task. \
 `Training_Mask_Dataset`: This path refers to the storage path of the generated DeepPulmoTB data.
 
 Secondly, execute the following statement repeated three times to complete the three-stage construction of the lung cavity:
@@ -199,8 +199,8 @@ python Cavern_Report_training_mask_dataset_Part_1.py ${Cavern_Report_Train_Bboxe
 
 `Cavern_report_train_bboxes`: The path input is the file path of cavern report bounding boxes cvs. \
 `Cavern_Report_Train_CT`: This path refers to the original CT data files of the two tasks of cavern detection and cavern report. \
-`Cavern_Report_Train_Masks1`: This path refers to the train mask version 1 data file of the lung area of the cavern report task. \
-`Cavern_Report_Train_Masks2`: This path refers to the train mask version 2 data file of the lung area of the cavern report task. \
+`Cavern_Report_Train_Masks1`: This path refers to the train mask version 1 data files of the lung area of the cavern report task. \
+`Cavern_Report_Train_Masks2`: This path refers to the train mask version 2 data files of the lung area of the cavern report task. \
 `Cavern_Report_Train_CT_PNG`: This path refers to the decompressed images of the original CT data files of the two tasks of cavern detection and cavern report. \
 `Training_Mask_Dataset`: This path refers to the storage path of the generated DeepPulmoTB data.
 
