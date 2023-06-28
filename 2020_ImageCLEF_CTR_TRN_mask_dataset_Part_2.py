@@ -26,8 +26,8 @@ def main():
   
   parser = ArgumentParser()
 
-  parser.add_argument('Train_masks1', help=' ')
-  parser.add_argument('Train_masks2', help=' ')
+  parser.add_argument('CTR_TRN_masks1', help=' ')
+  parser.add_argument('CTR_TRN_masks2', help=' ')
   parser.add_argument('Ouput_Dirs', help=' ')
   args = parser.parse_args()
     
@@ -48,25 +48,25 @@ def main():
   
     print("The name of the file to process: " + str(nill_file))
   
-    imgs = nib.load(args.Train_masks1 + "/" + nill_file + '.nii.gz')
+    imgs = nib.load(args.CTR_TRN_masks1 + "/" + nill_file + '.nii.gz')
   
     newimg = imgs.get_fdata()
   
     newimg = newimg.transpose(2,1,0)
   
-    src_mask1_ = nib.load(args.Train_masks1 + "/" + nill_file + '.nii.gz')
+    src_mask1_ = nib.load(args.CTR_TRN_masks1 + "/" + nill_file + '.nii.gz')
   
     src_mask1 = src_mask1_.get_fdata()
   
     src_mask1 = src_mask1.transpose(2,1,0)
   
-    src_mask2_ = nib.load(args.Train_masks2 + "/" + nill_file + '.nii.gz')
+    src_mask2_ = nib.load(args.CTR_TRN_masks2 + "/" + nill_file + '.nii.gz')
   
     src_mask2 = src_mask2_.get_fdata()
   
     src_mask2 = src_mask2.transpose(2,1,0)
   
-    image_count = getarrayFromslice(args.Train_masks2 +  "/" + nill_file + '.nii.gz')
+    image_count = getarrayFromslice(args.CTR_TRN_masks2 +  "/" + nill_file + '.nii.gz')
   
     image_type = []
   
