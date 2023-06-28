@@ -62,7 +62,7 @@ def main():
   args = parser.parse_args()
 
 
-  data_pd_ = pd.read_csv(args.Caverns_detection_train_bboxes)
+  data_pd_ = pd.read_csv(args.Caverns_report_train_bboxes)
 
   id = list(data_pd_['id'])
   X1 = list(data_pd_['bbox_X1'])
@@ -98,7 +98,7 @@ def main():
 
     if len(a) > 0:
 
-      imgs = nib.load(args.Cavern_Detection_Train_CT + '/' + nill_file + '.nii.gz')
+      imgs = nib.load(args.Cavern_Report_Train_CT + '/' + nill_file + '.nii.gz')
 
       newimg = imgs.get_fdata()
 
@@ -132,7 +132,7 @@ def main():
 
           img_read_list_piexls_count = []
           
-          srcs = cv2.imread(args.Cavern_Detection_Train_CT_PNG + '/' + nill_file + '/{}.png'.format(i))
+          srcs = cv2.imread(args.Cavern_Report_Train_CT_PNG + '/' + nill_file + '/{}.png'.format(i))
           srcs = cv2.cvtColor(srcs, cv2.COLOR_BGR2GRAY)
 
           img_read_lists.append(srcs)
@@ -227,7 +227,7 @@ def main():
 
         slices = slices + 1
 
-        img_dirs = args.Cavern_Detection_Train_CT + '/' + nill_file
+        img_dirs = args.Cavern_Report_Train_CT + '/' + nill_file
 
         if slices == len(a):
 
