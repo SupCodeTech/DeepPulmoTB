@@ -161,7 +161,7 @@ The final directory is as follows:
 First, execute the following statements to complete the construction of the consolidation and lung area, as well as the lung cavity (first stage) in the Z-axis direction.
 
 ```shell
-python Cavern_Detection_training_mask_dataset_Part_1.py ${Cavern_detection_train_bboxes} ${Cavern_Detection_Train_CT} ${Cavern_Detection_Train_Masks1} ${Cavern_Detection_Train_Masks2} ${Cavern_Detection_Train_CT_PNG} ${Training_Mask _Dataset}
+python Cavern_Detection_training_mask_dataset_Part_1.py ${Cavern_detection_train_bboxes} ${Cavern_Detection_Train_CT} ${Cavern_Detection_Train_Masks1} ${Cavern_Detection_Train_Masks2} ${Cavern_Detection_Train_CT_PNG} ${Training_Mask_Dataset}
 ```
 `Caverns_detection_train_bboxes`: The path input is the path where the `CVS` file of cavern detection bounding boxes is located. \
 `Cavern_Detection_Train_CT`: This path refers to the storage path of the original CT data files of the cavern detection task. \
@@ -262,6 +262,10 @@ and unzip it,and place it in the following directory:
 │ │ │ │ ├── CTR_TRN_masks2
 │ │ │ │ │ ├── CTR_TRN_001.nii.gz
 │ │ │ │ │ ├── ...
+```
+
+```shell
+python Cavern_Report_Lung_Cavity_X_Aixs.py ${Cavern_Report_train_bboxes} ${Cavern_Report_Train_CT} ${Cavern_Report_Train_CT_PNG}
 ```
 
 
