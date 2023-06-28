@@ -55,9 +55,9 @@ def main():
   
   parser = ArgumentParser()
 
-  parser.add_argument('Cavern_reprot_train_bboxes', help='Caverns detection train CT CVS files path')
-  parser.add_argument('Cavern_Detection_Train_CT', help=' ')
-  parser.add_argument('Cavern_Detection_Train_CT_PNG', help=' ')
+  parser.add_argument('Caverns_report_train_bboxes', help='Caverns report train CT CVS files path')
+  parser.add_argument('Cavern_Report_Train_CT', help='Cavern report Train CT nii.gz files')
+  parser.add_argument('Cavern_Report_Train_CT_PNG', help='Cavern report Train CT PNG files')
 
   args = parser.parse_args()
 
