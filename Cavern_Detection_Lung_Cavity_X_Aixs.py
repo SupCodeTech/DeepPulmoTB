@@ -1,4 +1,3 @@
-
 import cv2 as cv
 import matplotlib.pyplot as plt
 import math
@@ -18,22 +17,22 @@ from nibabel.testing import data_path
 import os
 
 def calculate_histogram(image):
-    # 计算直方图
+    
     histogram = np.histogram(image.flatten(), bins=256, range=[0, 256])
     return histogram
 
 def sort_histogram_frequencies(histogram):
-    # 对直方图频率进行排序
+    
     frequencies = histogram[0]
-    pixel_values = histogram[1][:-1]  # 像素值数组
-    valid_indices = np.where(pixel_values >= 5)  # 有效的像素值索引
-    sorted_indices = np.argsort(frequencies[valid_indices])[::-1]  # 按频率降序排序的索引
-    sorted_frequencies = frequencies[valid_indices][sorted_indices]  # 排序后的频率
-    sorted_pixel_values = pixel_values[valid_indices][sorted_indices]  # 排序后的像素值
+    pixel_values = histogram[1][:-1]  
+    valid_indices = np.where(pixel_values >= 5)  
+    sorted_indices = np.argsort(frequencies[valid_indices])[::-1]  
+    sorted_frequencies = frequencies[valid_indices][sorted_indices]  
+    sorted_pixel_values = pixel_values[valid_indices][sorted_indices]  
     return sorted_pixel_values, sorted_frequencies
 
 def find_pixel_differences(sorted_pixel_values):
-    # 寻找像素值之差大于30的两个像素
+    
     for i in range(1, len(sorted_pixel_values)):
         difference = abs(sorted_pixel_values[0] - sorted_pixel_values[i])
         if difference > 30:
@@ -41,7 +40,7 @@ def find_pixel_differences(sorted_pixel_values):
     return None
 
 def plot_histogram(histogram, pixel_1, pixel_2):
-    # 绘制直方图
+    
     plt.figure()
     plt.title('Histogram')
     plt.xlabel('Pixel Value')
@@ -62,7 +61,6 @@ def main():
 
   args = parser.parse_args()
 
-
   data_pd_ = pd.read_csv(args.Caverns_detection_train_bboxes)
 
   id = list(data_pd_['id'])
@@ -76,8 +74,6 @@ def main():
   nill_file = None
   threshold_value = 0
   extract_threshold_value = 0
-
- 
 
   for files_num in range(558):
 
@@ -95,15 +91,13 @@ def main():
     image_type = []
 
     count_ = 0
-    a = [] # 属于这个文件的所有id
+    a = [] 
     for p in range(len(data_pd_)):
       if id[p] == nill_file:
         count_ = count_ + 1
         a.append(p)
 
     if len(a) > 0:
-
-      # 计算目录图片数量
 
       imgs = nib.load(args.Cavern_Detection_Train_CT + '/' + nill_file + '.nii.gz')
 
@@ -183,20 +177,16 @@ def main():
 
             histogram = calculate_histogram(patch_ee)
 
-            # 对直方图频率进行排序
             sorted_pixel_values, sorted_frequencies = sort_histogram_frequencies(histogram)
 
-            # 寻找像素值之差大于30的两个像素
             pixel_1, pixel_2 = find_pixel_differences(sorted_pixel_values)
 
             threshold_value = (pixel_1 + pixel_2) // 2
 
-            # 使用平均灰度值作为阈值进行二值化
             threshold, binary = cv2.threshold(patch_ee, threshold_value, 255, cv2.THRESH_BINARY)
 
             for pz in range(binary.shape[0]):
               for px in range(binary.shape[1]):
-                # abc_stacks[i][py + (y1)][px + (x1)] = binary[py][px]
                 if newimg[pz + css, i , px + ass] == 1 or newimg[pz + css, i , px + ass] == 3:
                   k_lesion[pz + css, i , px + ass] = 255
                   binary[pz][px] = 255
@@ -205,20 +195,15 @@ def main():
                   k_lesion[pz + css, i, px + ass] = 255
 
             binary = binary[bbz_len:2*bbz_len, bbx_len:2*bbx_len]
-
-            # 轮廓发现
+              
             contours, hierarchy = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
             binary = np.dstack((binary, binary, binary))
 
-            # 创建与原始图像大小相同的全黑图像
             mask = np.zeros_like(binary)
 
-            # 循环所有轮廓，并绘制它们
             for sr in range(len(contours)):
-                # 如果轮廓具有父轮廓，则表示它是空洞轮廓
                 if hierarchy[0][sr][3] != -1:
-                    # 绘制轮廓
                     cv2.drawContours(mask, contours, sr, (255, 255, 255), cv2.FILLED)
 
             left_up_corner = False
