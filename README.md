@@ -259,3 +259,10 @@ The final overall directory is as follows:
 
 The code for this part will be published soon
 
+
+## Contact
+If you have any question, please feel free to contact me via tan.joey@student.upm.edu.my
+
+## LICENSE
+
+This repo is under the Apache-2.0 license. For commercial use, please contact the authors.
