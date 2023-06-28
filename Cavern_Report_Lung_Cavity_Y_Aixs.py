@@ -1,8 +1,3 @@
-# 代码区块 （六）组输出
-# 代码区块编码：ABAB0
-
-# 读取已经提取的JPG文件集合, 并提取图片的目标检测框内的像素(构建边界框自适应算法)，背景设置为0
-
 import cv2 as cv
 import matplotlib.pyplot as plt
 from google.colab.patches import cv2_imshow
@@ -18,33 +13,35 @@ import SimpleITK as sitk
 from argparse import ArgumentParser
 from PIL import Image, ImageDraw
 import numpy as np
-
+import nibabel as nib
+from nibabel.testing import data_path
+import os
 
 def calculate_histogram(image):
-    # 计算直方图
+    
     histogram = np.histogram(image.flatten(), bins=256, range=[0, 256])
     return histogram
 
 def sort_histogram_frequencies(histogram):
-    # 对直方图频率进行排序
+    
     frequencies = histogram[0]
-    pixel_values = histogram[1][:-1]  # 像素值数组
-    valid_indices = np.where(pixel_values >= 5)  # 有效的像素值索引
-    sorted_indices = np.argsort(frequencies[valid_indices])[::-1]  # 按频率降序排序的索引
-    sorted_frequencies = frequencies[valid_indices][sorted_indices]  # 排序后的频率
-    sorted_pixel_values = pixel_values[valid_indices][sorted_indices]  # 排序后的像素值
+    pixel_values = histogram[1][:-1]  
+    valid_indices = np.where(pixel_values >= 5)  
+    sorted_indices = np.argsort(frequencies[valid_indices])[::-1]  
+    sorted_frequencies = frequencies[valid_indices][sorted_indices]  
+    sorted_pixel_values = pixel_values[valid_indices][sorted_indices]  
     return sorted_pixel_values, sorted_frequencies
 
 def find_pixel_differences(sorted_pixel_values):
-    # 寻找像素值之差大于40的两个像素
+    
     for i in range(1, len(sorted_pixel_values)):
         difference = abs(sorted_pixel_values[0] - sorted_pixel_values[i])
-        if difference > 40:
+        if difference > 30:
             return sorted_pixel_values[0], sorted_pixel_values[i]
     return None
 
 def plot_histogram(histogram, pixel_1, pixel_2):
-    # 绘制直方图
+    
     plt.figure()
     plt.title('Histogram')
     plt.xlabel('Pixel Value')
@@ -79,11 +76,6 @@ def main():
   threshold_value = 0
   extract_threshold_value = 0
 
-  import nibabel as nib
-  from nibabel.testing import data_path
-  import os
-
-
   for files_num in range(60):
 
     if files_num < 10:
@@ -98,15 +90,11 @@ def main():
     image_type = []
 
     count_ = 0
-    a = [] # 属于这个文件的所有id
+    a = [] 
     for p in range(len(data_pd_)):
       if id[p] == nill_file:
         count_ = count_ + 1
         a.append(p)
-
-    # if len(a) > 0:
-
-    # 计算目录图片数量
 
     imgs = None
     newimg = None
@@ -150,8 +138,6 @@ def main():
       if select_flag:
         for i in range(image_count):
 
-          # print("第 " + str(i) +  " 张图片")
-
           img_read_list_piexls_count = []
         
           srcs = cv2.imread(args.Cavern_Detection_Train_CT_PNG + '/' + nill_file + '/{}.png'.format(i))
@@ -163,12 +149,7 @@ def main():
         
         abc_stacks = np.stack(img_read_lists, axis = 0)
 
-        # cv2_imshow(abc_stacks[:,50,:])
-
         print("abc_stacks.shape: " + str(abc_stacks.shape))
-        # abc_stack_ = np.stack(img_read_list_, axis = 0)
-
-      # 正面切片 - Front
 
       while slices < len(a) and select_flag:
         for i in range(512):
@@ -182,10 +163,6 @@ def main():
           bby_len = y2 - y1
 
           if i >= data_pd_['bbox_X1'][a[slices]] and i <= data_pd_['bbox_X2'][a[slices]]:
-
-            # patch_ee = np.zeros((bbx_len*2,bby_len*2))
-
-            # print("Z1: " + str(data_pd_['Z1'][a[slices]]) + "Z2: " + str(data_pd_['Z2'][a[slices]]) + " 阈值： " + str(abc_stack_piexls[i] ))
 
             patch_ee = None
 
@@ -206,32 +183,18 @@ def main():
             patch_ee = abc_stacks[css:dss, ass : bss, i]
             patch_ee_ = abc_stacks[z1:z2, y1 : y2, i]
 
-            # print("修复前： *****************")
+            histogram = calculate_histogram(patch_ee)
 
-            # cv2_imshow(cv2.resize(patch_ee[bbz_len:2*bbz_len, bby_len:2*bby_len], (bby_len, bby_len)))
+            sorted_pixel_values, sorted_frequencies = sort_histogram_frequencies(histogram)
+              
+            pixel_1, pixel_2 = find_pixel_differences(sorted_pixel_values)
 
+            threshold_value = (pixel_1 + pixel_2) // 2
 
-            # patch_ees_ = abc_stacks[i, y1 : y2, x1:x2]
-            # patch_ees_ = np.dstack((patch_ee, patch_ees_, patch_ees_))
-
-            ###################### CONSOLIDATION 阈值提取 ##########################
-
-            # 计算灰度图像的平均值
-
-            # ksc = cv2.cvtColor(patch_ee, cv2.COLOR_BGR2GRAY)
-
-            mean_val = np.mean(patch_ee)
-
-            # gray = patch_ee
-
-            # # cv2_imshow(gray)
-
-            # # 使用平均灰度值作为阈值进行二值化
-            threshold, binary = cv2.threshold(patch_ee, mean_val, 255, cv2.THRESH_BINARY)
+            threshold, binary = cv2.threshold(patch_ee, threshold_value, 255, cv2.THRESH_BINARY)
 
             for pz in range(binary.shape[0]):
               for py in range(binary.shape[1]):
-                # abc_stacks[i][py + (y1)][px + (x1)] = binary[py][px]
                 if newimg[pz + css, py + ass, i] == 1 or newimg[pz + css, py + ass, i] == 3:
                   k_lesion[pz + css, py + ass, i] = 255
                   binary[pz][py] = 255
@@ -239,52 +202,19 @@ def main():
                 elif binary[pz][py] > 0:
                   k_lesion[pz + css, py + ass, i] = 255
 
-
-            # cv2_imshow(binary)
-
-            # print("binary.shape" + str(binary.shape) + " bbx_len: " + str(bbx_len) + " bby_len: " + str(bby_len))
-
-            # cv2_imshow(k_lesion[i])
-
-            # print("thresh.shape: " + str(thresh.shape))
-
             binary = binary[bbz_len:2*bbz_len, bby_len:2*bby_len]
-            # binary = cv2.resize(binary, (bby_len, bby_len))
-
-
-            # print("修复前： *****************")
-
-            # cv2_imshow(binary)
-
-            # 轮廓发现
+              
             contours, hierarchy = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
-
-            ###################### Lung cavity 阈值提取 ##########################
-
-
-            # binary = cv2.resize(binary, (bby_len, bby_len))
 
             binary = np.dstack((binary, binary, binary))
 
-            # print("contours.shape: " + str(contours.shape))
-
-            # 创建与原始图像大小相同的全黑图像
             mask = np.zeros_like(binary)
 
-            # 循环所有轮廓，并绘制它们
             for sr in range(len(contours)):
-                # 如果轮廓具有父轮廓，则表示它是空洞轮廓
+               
                 if hierarchy[0][sr][3] != -1:
-                    # 绘制轮廓
+
                     cv2.drawContours(mask, contours, sr, (255, 255, 255), cv2.FILLED)
-
-
-            # cv2_imshow(mask)
-
-            # mask = cv2.resize(mask, (bbz_len, bby_len))
-
-            # print("修复后： *****************")
 
             left_up_corner = False
             right_up_corner = False
@@ -293,9 +223,6 @@ def main():
 
             for pz in range(mask.shape[0]):
               for py in range(mask.shape[1]):
-                # abc_stacks[i][py + (y1)][px + (x1)] = binary[py][px]
-                # print("pz + z1: " + str(pz + z1) + " py + y1: " + str(py + y1))
-                # print("mask[pz][py][0].shape: " + str(mask[pz][py][0].shape))
                 k_lungcavity[pz + z1, py + y1, i] = mask[pz][py][0]
 
             cross_move = 0
@@ -312,10 +239,6 @@ def main():
         slices = slices + 1
         img_dirs = args.Cavern_Detection_Train_CT + '/' + nill_file
 
-        # img_1024_path_folder = os.path.exists(img_dirs)
-        # if not img_1024_path_folder:
-        #   os.makedirs(img_dirs)
-
         if slices == len(a):
 
           if newimg.shape != k.shape:
@@ -330,14 +253,7 @@ def main():
                 if newimg[rt1][rt2][rt3] > 0:
                   if k_lungcavity[rt1][rt2][rt3] > 0 and newimg[rt1][rt2][rt3] != 1:
                     newimg[rt1][rt2][rt3] = 3
-
-                  # cv2_imshow(newimg[rt1])
-
-                # if k_lungcavity[rt1][rt2][rt3] == 128 and newimg[rt1][rt2][rt3] > 0:
-                #   newimg[rt1][rt2][rt3] = 4
-          # k = newimg + k
-
-          # 记得 k 换为 newimg
+                      
           newimg = newimg.transpose(2,1,0)
           final_img = nib.Nifti1Image(newimg, imgs.affine)
           print("unique" + str(np.unique(newimg)))
@@ -345,14 +261,3 @@ def main():
           nib.save(final_img, img_dirs + '.nii.gz')
 
           print("File " + img_dirs + '.nii.gz' + " saved！！")
-
-          # for i in range(image_count):
-          #   cv2.imwrite(img_dirs + "/volume-{}.jpg".format(i), k[i])
-
-  # 侧面切片 - Side
-
-
-
-# cv2_imshow(src)
-#   line1_x1, line1_y1, line1_x2, line1_y2 = 160, 80, 160, 220
-#   line2_x1, line2_y1, line2_x2, line2_y2 = 20, 100, 220, 100
