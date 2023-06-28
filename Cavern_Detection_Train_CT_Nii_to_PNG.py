@@ -1,4 +1,3 @@
-# 从nill文件中，对 Train 数据集的 Mask 图片的提取
 import numpy as np
 import os
 import random
@@ -44,8 +43,8 @@ def main():
 
   parser = ArgumentParser()
 
-  parser.add_argument('Caverns_Detection_Train_CT', help='Caverns detection train CT files path')
-  parser.add_argument('Original_Image_Dataset', help='Original image dataset path')
+  parser.add_argument('Cavern_Detection_Train_CT', help='Caverns detection train CT files path')
+  parser.add_argument('Cavern_Detection_Train_CT_PNG', help='Original image dataset path')
 
   args = parser.parse_args()
 
@@ -69,9 +68,9 @@ def main():
       img_select = img_array[i,:,:]
      
       img_pic = Image.fromarray(img_select)
-      img_prefiex = args.Original_Image_Dataset
+      img_prefiex = args.Cavern_Detection_Train_CT_PNG
 
-      img_save_dir_ = nill_file[-14:-7] # TRN_000_regsegm_py.nii.gz
+      img_save_dir_ = nill_file[-14:-7] 
       img_savename_ = '/{}.png'.format(i)
       img_savename = img_prefiex + img_save_dir_ + img_savename_
       img_savename_dir = img_prefiex + img_save_dir_
@@ -85,11 +84,11 @@ def main():
 
   for i in range(558):
     if i < 10:
-      getImFromNill_(args.Caverns_Detection_Train_CT + '/TRN_00{}.nii.gz'.format(i))
+      getImFromNill_(args.Cavern_Detection_Train_CT + '/TRN_00{}.nii.gz'.format(i))
     elif i >= 10 and i <100:
-      getImFromNill_(args.Caverns_Detection_Train_CT + '/TRN_0{}.nii.gz'.format(i))
+      getImFromNill_(args.Cavern_Detection_Train_CT + '/TRN_0{}.nii.gz'.format(i))
     elif i >=100 and i <1000:
-      getImFromNill_(args.Caverns_Detection_Train_CT + '/TRN_{}.nii.gz'.format(i))
+      getImFromNill_(args.Cavern_Detection_Train_CT + '/TRN_{}.nii.gz'.format(i))
 
 
 if __name__ == '__main__':
