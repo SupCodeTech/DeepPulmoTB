@@ -181,10 +181,18 @@ def main():
             patch_ee = abc_stacks[css:dss, i, ass : bss]
             patch_ee_ = abc_stacks[z1:z2, i ,x1 : x2]
 
-            mean_val = np.mean(patch_ee)
+            histogram = calculate_histogram(patch_ee)
 
-            # # 使用平均灰度值作为阈值进行二值化
-            threshold, binary = cv2.threshold(patch_ee, mean_val, 255, cv2.THRESH_BINARY)
+            # 对直方图频率进行排序
+            sorted_pixel_values, sorted_frequencies = sort_histogram_frequencies(histogram)
+
+            # 寻找像素值之差大于40的两个像素
+            pixel_1, pixel_2 = find_pixel_differences(sorted_pixel_values)
+
+            threshold_value = (pixel_1 + pixel_2) // 2
+
+            # 使用平均灰度值作为阈值进行二值化
+            threshold, binary = cv2.threshold(patch_ee, threshold_value, 255, cv2.THRESH_BINARY)
 
             for pz in range(binary.shape[0]):
               for px in range(binary.shape[1]):
