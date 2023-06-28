@@ -254,3 +254,7 @@ def main():
 
           print("File " + img_dirs + '.nii.gz' + " saved！！")
 
+
+if __name__ == '__main__':
+    main()
+ 
