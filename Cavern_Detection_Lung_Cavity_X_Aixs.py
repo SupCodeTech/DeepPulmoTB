@@ -33,10 +33,10 @@ def sort_histogram_frequencies(histogram):
     return sorted_pixel_values, sorted_frequencies
 
 def find_pixel_differences(sorted_pixel_values):
-    # 寻找像素值之差大于40的两个像素
+    # 寻找像素值之差大于30的两个像素
     for i in range(1, len(sorted_pixel_values)):
         difference = abs(sorted_pixel_values[0] - sorted_pixel_values[i])
-        if difference > 40:
+        if difference > 30:
             return sorted_pixel_values[0], sorted_pixel_values[i]
     return None
 
@@ -57,8 +57,8 @@ def main():
   parser = ArgumentParser()
 
   parser.add_argument('Caverns_detection_train_bboxes', help='Caverns detection train CT CVS files path')
-  parser.add_argument('Cavern_Detection_Train_CT', help=' ')
-  parser.add_argument('Cavern_Detection_Train_CT_PNG', help=' ')
+  parser.add_argument('Cavern_Detection_Train_CT', help=' Cavern Detection Train CT nii.gz files ')
+  parser.add_argument('Cavern_Detection_Train_CT_PNG', help=' Cavern Detection Train CT PNG files ')
 
   args = parser.parse_args()
 
@@ -138,24 +138,16 @@ def main():
         for i in range(image_count):
 
           img_read_list_piexls_count = []
-
-          # 读取已经被提取Mask部分的图像
           
           srcs = cv2.imread(args.Cavern_Detection_Train_CT_PNG + '/' + nill_file + '/{}.png'.format(i))
           srcs = cv2.cvtColor(srcs, cv2.COLOR_BGR2GRAY)
 
-          
           img_read_lists.append(srcs)
-
         
         abc_stacks = np.stack(img_read_lists, axis = 0)
 
-        # cv2_imshow(abc_stacks[:,50,:])
-
         print("abc_stacks.shape: " + str(abc_stacks.shape))
-        # abc_stack_ = np.stack(img_read_list_, axis = 0)
 
-      # 正面切片 - Front
 
       while slices < len(a):
         for i in range(512):
@@ -189,25 +181,7 @@ def main():
             patch_ee = abc_stacks[css:dss, i, ass : bss]
             patch_ee_ = abc_stacks[z1:z2, i ,x1 : x2]
 
-            # print("修复前： *****************")
-
-            # cv2_imshow(cv2.resize(patch_ee[bbz_len:2*bbz_len, bby_len:2*bby_len], (bby_len, bby_len)))
-
-
-            # patch_ees_ = abc_stacks[i, y1 : y2, x1:x2]
-            # patch_ees_ = np.dstack((patch_ee, patch_ees_, patch_ees_))
-
-            ###################### CONSOLIDATION 阈值提取 ##########################
-
-            # 计算灰度图像的平均值
-
-            # ksc = cv2.cvtColor(patch_ee, cv2.COLOR_BGR2GRAY)
-
             mean_val = np.mean(patch_ee)
-
-            # gray = patch_ee
-
-            # # cv2_imshow(gray)
 
             # # 使用平均灰度值作为阈值进行二值化
             threshold, binary = cv2.threshold(patch_ee, mean_val, 255, cv2.THRESH_BINARY)
@@ -222,22 +196,12 @@ def main():
                 elif binary[pz][px] > 0:
                   k_lesion[pz + css, i, px + ass] = 255
 
-
             binary = binary[bbz_len:2*bbz_len, bbx_len:2*bbx_len]
-            
 
             # 轮廓发现
             contours, hierarchy = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-
-            ###################### Lung cavity 阈值提取 ##########################
-
-
-            # binary = cv2.resize(binary, (bby_len, bby_len))
-
             binary = np.dstack((binary, binary, binary))
-
-            # print("contours.shape: " + str(contours.shape))
 
             # 创建与原始图像大小相同的全黑图像
             mask = np.zeros_like(binary)
@@ -248,13 +212,6 @@ def main():
                 if hierarchy[0][sr][3] != -1:
                     # 绘制轮廓
                     cv2.drawContours(mask, contours, sr, (255, 255, 255), cv2.FILLED)
-
-
-            # cv2_imshow(mask)
-
-            # mask = cv2.resize(mask, (bbz_len, bby_len))
-
-            # print("修复后： *****************")
 
             left_up_corner = False
             right_up_corner = False
@@ -294,8 +251,6 @@ def main():
                 if newimg[rt1][rt2][rt3] > 0:
                   if k_lungcavity[rt1][rt2][rt3] > 0 and newimg[rt1][rt2][rt3] != 1:
                     newimg[rt1][rt2][rt3] = 3
-
-          # 记得 k 换为 newimg
 
           newimg = newimg.transpose(2,1,0)
           final_img = nib.Nifti1Image(newimg, imgs.affine)
