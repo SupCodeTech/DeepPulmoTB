@@ -1,11 +1,6 @@
-# 代码区块 （六）组输出
-# 代码区块编码：ABAB0
-
-# 读取已经提取的JPG文件集合, 并提取图片的目标检测框内的像素(构建边界框自适应算法)，背景设置为0
 
 import cv2 as cv
 import matplotlib.pyplot as plt
-from google.colab.patches import cv2_imshow
 import math
 import pathlib
 from skimage.io import imread
@@ -18,7 +13,9 @@ import SimpleITK as sitk
 from argparse import ArgumentParser
 from PIL import Image, ImageDraw
 import numpy as np
-
+import nibabel as nib
+from nibabel.testing import data_path
+import os
 
 def calculate_histogram(image):
     # 计算直方图
@@ -80,9 +77,7 @@ def main():
   threshold_value = 0
   extract_threshold_value = 0
 
-  import nibabel as nib
-  from nibabel.testing import data_path
-  import os
+ 
 
   for files_num in range(558):
 
