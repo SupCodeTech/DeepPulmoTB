@@ -38,7 +38,7 @@ def main():
   for files_num in range(1,422):
 
     if files_num < 10:
-      data_dir = "TST_000{}".format(files_num)
+      data_dir = "TRN_000{}".format(files_num)
     elif files_num >= 10 and files_num < 100:
       data_dir = "TRN_00{}".format(files_num)
     elif files_num >= 100 and files_num < 1000:
