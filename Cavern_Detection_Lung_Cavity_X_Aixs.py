@@ -186,7 +186,7 @@ def main():
             # 对直方图频率进行排序
             sorted_pixel_values, sorted_frequencies = sort_histogram_frequencies(histogram)
 
-            # 寻找像素值之差大于40的两个像素
+            # 寻找像素值之差大于30的两个像素
             pixel_1, pixel_2 = find_pixel_differences(sorted_pixel_values)
 
             threshold_value = (pixel_1 + pixel_2) // 2
