@@ -267,3 +267,6 @@ def main():
         nib.save(final_img, img_dirs + '.nii.gz')
 
         print("File " + img_dirs + '.nii.gz' + " saved！！")
+
+if __name__ == '__main__':
+    main()
