@@ -227,7 +227,8 @@ python Cavern_Report_Lung_Cavity_X_Aixs.py ${Cavern_Report_train_bboxes} ${Caver
 
 For part2, we need to download the following datasets:
 
-ImageCLEF 2021 Tuberculosis - [TBT classification](https://www.aicrowd.com/challenges/imageclef-2021-tuberculosis-tbt-classification) and [CT report](https://www.aicrowd.com/challenges/imageclef-2020-tuberculosis-ct-report)
+ImageCLEF 2021 Tuberculosis - [TBT classification](https://www.aicrowd.com/challenges/imageclef-2021-tuberculosis-tbt-classification) \
+ImageCLEF 2020 Tuberculosis - [CT report](https://www.aicrowd.com/challenges/imageclef-2020-tuberculosis-ct-report)
 
 and unzip it,and place it in the following directory:
 
