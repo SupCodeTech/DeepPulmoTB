@@ -264,10 +264,17 @@ and unzip it,and place it in the following directory:
 │ │ │ │ │ ├── ...
 ```
 
+For the 2020 ImageCLEF test masks, we use the following command:
+
 ```shell
-python Cavern_Report_Lung_Cavity_X_Aixs.py ${Cavern_Report_train_bboxes} ${Cavern_Report_Train_CT} ${Cavern_Report_Train_CT_PNG}
+python 2021_ImageCLEF_CTR_TST_mask_dataset_Part_2.py ${Test_masks1} ${Test_masks2} ${Ouput_Dirs}
 ```
 
+For the 2021_ImageCLEF train masks, we use the following command:
+
+```shell
+python 2021_ImageCLEF_CTR_TRN_mask_dataset_Part_2.py ${Train_masks1} ${Train_masks2} ${Ouput_Dirs}
+```
 
 
 ## Contact
