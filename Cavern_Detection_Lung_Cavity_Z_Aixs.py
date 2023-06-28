@@ -34,7 +34,7 @@ def find_pixel_differences(sorted_pixel_values):
     # 寻找像素值之差大于40的两个像素
     for i in range(1, len(sorted_pixel_values)):
         difference = abs(sorted_pixel_values[0] - sorted_pixel_values[i])
-        if difference > 40:
+        if difference > 30:
             return sorted_pixel_values[0], sorted_pixel_values[i]
     return None
 
