@@ -267,13 +267,24 @@ and unzip it,and place it in the following directory:
 For the 2020 ImageCLEF test masks, we use the following command:
 
 ```shell
-python 2021_ImageCLEF_CTR_TST_mask_dataset_Part_2.py ${Test_masks1} ${Test_masks2} ${Ouput_Dirs}
+python 2020_ImageCLEF_CTR_TST_mask_dataset_Part_2.py ${CTR_TST_masks1} ${CTR_TST_masks2} ${Ouput_Dirs}
 ```
 
-For the 2021_ImageCLEF train masks, we use the following command:
+For the 2020 ImageCLEF train masks, we use the following command:
 
 ```shell
-python 2021_ImageCLEF_CTR_TRN_mask_dataset_Part_2.py ${Train_masks1} ${Train_masks2} ${Ouput_Dirs}
+python 2020_ImageCLEF_CTR_TRN_mask_dataset_Part_2.py ${CTR_TRN_masks1} ${CTR_TRN_masks2} ${Ouput_Dirs}
+```
+For the 2021 ImageCLEF test masks, we use the following command:
+
+```shell
+python 2021_ImageCLEF_TST_mask_dataset_Part_2.py ${test_mask1} ${test_mask2} ${Ouput_Dirs}
+```
+
+For the 2021 ImageCLEF train masks, we use the following command:
+
+```shell
+python 2021_ImageCLEF_TRN_mask_dataset_Part_2.py ${train_mask1} ${train_mask2} ${Ouput_Dirs}
 ```
 
 
