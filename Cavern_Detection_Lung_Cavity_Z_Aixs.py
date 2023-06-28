@@ -105,7 +105,7 @@ def main():
     newimg = None
 
     if len(a) > 0:
-      imgs = nib.load(args.Training_Mask_Dataset + '/' + nill_file + '.nii.gz')
+      imgs = nib.load(args.Cavern_Detection_Train_CT + '/' + nill_file + '.nii.gz')
 
       newimg = imgs.get_fdata()
 
