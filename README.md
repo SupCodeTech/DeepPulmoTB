@@ -236,33 +236,38 @@ and unzip it,and place it in the following directory:
 
 │ ├── Training Dataset
 │ │ ├── Part 2
-│ │ │ ├── CTR_TRN_001
-│ │ │ ├── ...
+│ │ │ ├── 2021_ImageCLEF
+│ │ │ │ ├── test_mask1
+│ │ │ │ │ ├── TST_0001.nii.gz
+│ │ │ │ │ ├── ...
+│ │ │ │ ├── test_mask2
+│ │ │ │ │ ├── TST_0001.nii.gz
+│ │ │ │ │ ├── ...
+│ │ │ │ ├── train_mask1
+│ │ │ │ │ ├── TRN_0001.nii.gz
+│ │ │ │ │ ├── ...
+│ │ │ │ ├── train_mask2
+│ │ │ │ │ ├── TRN_0001.nii.gz
+│ │ │ │ │ ├── ...
+│ │ │ ├── 2020_ImageCLEF
+│ │ │ │ ├── CTR_TST_masks1
+│ │ │ │ │ ├── CTR_TST_001.nii.gz
+│ │ │ │ │ ├── ...
+│ │ │ │ ├── CTR_TST_masks2
+│ │ │ │ │ ├── CTR_TST_001.nii.gz
+│ │ │ │ │ ├── ...
+│ │ │ │ ├── CTR_TRN_masks1
+│ │ │ │ │ ├── CTR_TRN_001.nii.gz
+│ │ │ │ │ ├── ...
+│ │ │ │ ├── CTR_TRN_masks2
+│ │ │ │ │ ├── CTR_TRN_001.nii.gz
+│ │ │ │ │ ├── ...
 ```
 
-The final overall directory is as follows:
-
-```none
-├── DeepPulmoTB
-│ ├── CVS
-│ │ ├── cavern_report_train_bounding_boxes
-│ │ ├── cavern_report_train_labels
-│ │ ├── cavern_detection_train_bboxes
-│ │ ├── cavern_detection_test_bounding_boxes
-│ ├── Training Dataset
-│ │ ├── Part 1
-│ │ │ ├── TRN_001
-│ │ │ ├── ...
-│ │ ├── Part 2
-│ │ │ ├── CTR_TRN_001
-│ │ │ ├── ...
-```
-
-The code for this part will be published soon
 
 
 ## Contact
-If you have any question, please feel free to contact me via tan.joey@student.upm.edu.my
+If you have any questions, please feel free to contact me via tan.joey@student.upm.edu.my
 
 ## LICENSE
 
