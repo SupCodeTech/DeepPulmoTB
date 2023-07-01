@@ -5,7 +5,8 @@ DeepPulmoTB is a comprehensive Tuberculosis lesion tissue segmentation dataset. 
 
 Examples of DeepPulmoTB are shown in Figure 1.
 
-![Figure35-1](https://github.com/SupCodeTech/DeepPulmoTB/assets/111235455/6dc42454-7387-4618-b4f8-ad7ae46fa682)
+![Figure35-1](https://github.com/SupCodeTech/DeepPulmoTB/assets/111235455/fa734bff-7299-4d2f-8416-58a9cab589c5)
+
 
 Figure 1: Examples of DeepPulmoTB.
 
