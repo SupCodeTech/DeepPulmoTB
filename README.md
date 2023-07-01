@@ -14,7 +14,7 @@ Figure 1: Examples of DeepPulmoTB.
 
 DeepPulmoTB is divided into two parts, Part1 and Part2, in which part1 is a multi-category semantic segmentation task, and part2 is a lung segmentation task. Note: Part 2 only contains the lung region segmentation recognition mask, which does not mean that there is no TB lesion tissue.
 
-DeepPulmoTB dataset is available in the [DeepPulmoTB dataset](https://drive.google.com/drive/folders/1QPinffQ59BufdGapQyLykfaqOiDhtrnX?usp=sharing). 
+DeepPulmoTB dataset is available in the [DeepPulmoTB dataset](https://drive.google.com/drive/folders/1QPinffQ59BufdGapQyLykfaqOiDhtrnX?usp=sharing). As the paper is still under review, the dataset has been encrypted. The decryption password is TMI Manuscript ID.
 
 Please take a look at the Data Description below for detailed information about the dataset.
 
