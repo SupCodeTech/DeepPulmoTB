@@ -11,7 +11,7 @@ Examples of DeepPulmoTB are shown in Figure 1.
 Figure 1: Examples of DeepPulmoTB.
 
 
-# DeepPulmoTB download
+# DeepPulmoTB Training Mask Download
 
 DeepPulmoTB is divided into two parts, Part1 and Part2, in which part1 is a multi-category semantic segmentation task, and part2 is a lung segmentation task. Note: Part 2 only contains the lung region segmentation recognition mask, which does not mean that there is no TB lesion tissue.
 
@@ -36,7 +36,77 @@ After decompressing DeepPulmoTB, you can get the following directory:
 In Part 1, pixel values 1 to 3 represent consolidation, Lung Mask version III, and Lung cavity.
 In Part 2, pixel value 1 represents Lung Mask version III.
 
+# DeepPulmoTB Training Data (ImageCLEF training data) Preparation
+
+For part1, we need to download the following datasets:
+
+ImageCLEF 2022 Tuberculosis - [Caverns Report](https://www.aicrowd.com/challenges/imageclef-2022-tuberculosis-caverns-report) and [Caverns Detection](https://www.aicrowd.com/challenges/imageclef-2022-tuberculosis-caverns-detection)
+
+and unzip the Cavern Detection Train CT files (1 to 7) and the Cavern Report Train CT files (1 to 2):
+
+```none
+-------------------------------------------------------------------------------------
+|                     Zip files                                    Unzip files      |
+-------------------------------------------------------------------------------------
+| de0e8772-594d-41ce-9e85-578c4b59e9f3_detection_train_CT_1    (TRN_000 - TRN_099)  |
+| 29cc320d-1c9d-4c7c-8d12-a006499c2f2f_detection_train_CT_2    (TRN_100 - TRN_179)  |
+| 3b9da027-6015-4806-bbe9-04efb760ee53_detection_train_CT_3    (TRN_180 - TRN_269)  |
+| c45b6a20-e3dc-49b5-bd93-1a86dc10721c_detection_train_CT_4    (TRN_270 - TRN_339)  |
+| 447557ed-45dd-4468-8381-dbf0642b4312_detection_train_CT_5    (TRN_340 - TRN_419)  |
+| f9da57c9-dbb5-4a3d-bebb-0618a8aef99f_detection_train_CT_6    (TRN_420 - TRN_499)  |
+| eac9b86a-7673-4b24-924a-29529de6f130_detection_train_CT_7    (TRN_500 - TRN_558)  |
+------------------------------------------------------------------------------------
+| 45037ba5-e1e7-4011-98c6-35ed190e204a_cavern_report_train_CT_1   (TRN_00 - TRN_29) |
+| e222bfea-28db-4d3a-b7cf-b68a7e18992b_cavern_report_train_CT_2   (TRN_30 - TRN_59) |
+-------------------------------------------------------------------------------------
+```
+they will be placed in the following directory:
+
+```none
+├── DeepPulmoTB
+│ ├── Original_Image_Dataset
+│ │ ├── Part 1
+│ │ │ ├── TRN_00.nii.gz
+│ │ │ ├── TRN_000.nii.gz
+│ │ │ ├──  …
+```
+
+For part2, we need to download the following datasets:
+
+ImageCLEF 2021 Tuberculosis - [TBT classification](https://www.aicrowd.com/challenges/imageclef-2021-tuberculosis-tbt-classification) \
+ImageCLEF 2020 Tuberculosis - [CT report](https://www.aicrowd.com/challenges/imageclef-2020-tuberculosis-ct-report)
+
+and unzip it,and place it in the following directory:
+
+```none
+--------------------------------------------------------------------------------------
+|                     Zip files                                    Unzip files       |
+--------------------------------------------------------------------------------------
+| 4e36978f-e771-4974-a0fb-6ae8a08ba3b2_CTR_TST_masks1    (CTR_TST_001 - CTR_TST_120) |
+| 4f37522e-e5f0-4811-97e5-a5a9c6edc699_CTR_TRN_masks2    (CTR_TRN_001 - CTR_TRN_120) |
+| 60ea64a3-11ff-4be9-9d81-f138dc6f3812_CTR_TRN_masks1    (CTR_TRN_001 - CTR_TRN_120) |
+| cdbd8feb-ca25-4eb4-ac7d-8fbebb3e23f7_CTR_TST_masks2    (CTR_TST_001 - CTR_TST_120) |
+--------------------------------------------------------------------------------------
+| 9cf78de9-d287-4d15-a8a7-fed01da0bf11_test-masks1       (TRN_00 - TRN_29)           |
+| 266ffd05-d03d-47e7-9ca9-d5130db1f7ac_train-masks1      (TRN_30 - TRN_59)           |
+| ccafd927-61c8-4554-b340-fb747c1310ea_train-masks2
+| fe8530a3-94dd-41d0-8ec2-c5edfed59cbb_test-masks2
+--------------------------------------------------------------------------------------
+```
+
+```none
+├── DeepPulmoTB
+│ ├── Original_Image_Dataset
+│ │ ├── Part 2
+│ │ │ ├── TRN_00.nii.gz
+│ │ │ ├── TRN_000.nii.gz
+│ │ │ ├──  …
+```
+
+
 # Construction method of DeepPulmoTB
+
+If you want to build DeepPulmoTB yourself, you can follow the instruction below:
 
 ## Environment configuration
 
