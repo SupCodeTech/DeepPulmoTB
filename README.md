@@ -76,7 +76,7 @@ For part2, we need to download the following datasets:
 ImageCLEF 2021 Tuberculosis - [TBT classification](https://www.aicrowd.com/challenges/imageclef-2021-tuberculosis-tbt-classification) \
 ImageCLEF 2020 Tuberculosis - [CT report](https://www.aicrowd.com/challenges/imageclef-2020-tuberculosis-ct-report)
 
-and unzip it,and place it in the following directory:
+and unzip CTR_TST_masks (1 to 2), CTR_TRN_masks (1 to 2), test-masks (1 to 2), train-masks (1 to 2)
 
 ```none
 --------------------------------------------------------------------------------------
@@ -87,19 +87,20 @@ and unzip it,and place it in the following directory:
 | 60ea64a3-11ff-4be9-9d81-f138dc6f3812_CTR_TRN_masks1    (CTR_TRN_001 - CTR_TRN_120) |
 | cdbd8feb-ca25-4eb4-ac7d-8fbebb3e23f7_CTR_TST_masks2    (CTR_TST_001 - CTR_TST_120) |
 --------------------------------------------------------------------------------------
-| 9cf78de9-d287-4d15-a8a7-fed01da0bf11_test-masks1       (TRN_00 - TRN_29)           |
-| 266ffd05-d03d-47e7-9ca9-d5130db1f7ac_train-masks1      (TRN_30 - TRN_59)           |
-| ccafd927-61c8-4554-b340-fb747c1310ea_train-masks2
-| fe8530a3-94dd-41d0-8ec2-c5edfed59cbb_test-masks2
+| 9cf78de9-d287-4d15-a8a7-fed01da0bf11_test-masks1       (TST_0001 - TST_0421)       |
+| 266ffd05-d03d-47e7-9ca9-d5130db1f7ac_train-masks1      (TRN_0001 - TRN_0917)       |
+| ccafd927-61c8-4554-b340-fb747c1310ea_train-masks2      (TRN_0001 - TRN_0917)       |
+| fe8530a3-94dd-41d0-8ec2-c5edfed59cbb_test-masks2       (TST_0001 - TST_0421)       |
 --------------------------------------------------------------------------------------
 ```
+
+, and place them in the following directory:
 
 ```none
 ├── DeepPulmoTB
 │ ├── Original_Image_Dataset
 │ │ ├── Part 2
-│ │ │ ├── TRN_00.nii.gz
-│ │ │ ├── TRN_000.nii.gz
+│ │ │ ├── TST_0001.nii.gz
 │ │ │ ├──  …
 ```
 
