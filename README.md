@@ -56,7 +56,7 @@ Coming soon
 
 
 ## Contact
-If you have any questions, please feel free to contact me via tan.joey@student.upm.edu.my
+If you have any questions, please feel free to contact me via tan.joey@pelajar.upm.edu.my
 
 ## LICENSE
 
