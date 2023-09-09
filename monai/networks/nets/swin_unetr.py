@@ -310,7 +310,7 @@ class SwinUNETR(nn.Module):
         dec0 = self.decoder2(dec1, enc1)
         out = self.decoder1(dec0, enc0)
         logits = self.out(out)
-        return logits
+        return logits,dec3,dec2,dec1,dec0
 
 
 def window_partition(x, window_size):
