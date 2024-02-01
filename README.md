@@ -3,7 +3,7 @@
 
 ## DeepPulmoTB Training Mask Download
 
-DeepPulmoTB dataset is available in the [DeepPulmoTB dataset](https://drive.google.com/drive/folders/1QPinffQ59BufdGapQyLykfaqOiDhtrnX?usp=sharing). As the paper is still under review, the dataset has been encrypted.
+DeepPulmoTB dataset is available in the [DeepPulmoTB dataset](https://drive.google.com/drive/folders/1QPinffQ59BufdGapQyLykfaqOiDhtrnX?usp=sharing). As the dataset is currently under ethical review, it has been encrypted.
 
 Please take a look at the Data Description below for detailed information about the dataset.
 
