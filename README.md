@@ -53,10 +53,6 @@ they will be placed in the following directory:
 │ │ ├── TRN_000.nii.gz
 │ │ ├──  …
 ```
-# DeepPulmoTBNet (DPTBNet)
-
-Coming soon
-
 
 ## Contact
 If you have any questions, please feel free to contact me via tan.joey@pelajar.upm.edu.my
