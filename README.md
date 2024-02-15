@@ -54,9 +54,6 @@ they will be placed in the following directory:
 │ │ ├──  …
 ```
 
-## Contact
-If you have any questions, please feel free to contact me via tan.joey@pelajar.upm.edu.my
-
 ## LICENSE
 
 This repo is under the Apache-2.0 license. For commercial use, please contact the authors.
